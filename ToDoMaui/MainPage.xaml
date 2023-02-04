@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+						 xmlns:mdi="clr-namespace:ToDoMaui.Models"
+             x:Class="ToDoMaui.MainPage">
+		<ContentPage.ToolbarItems >
+				<ToolbarItem  Text="Add To Do" Clicked="OnAddToDoClicked"/>
+		</ContentPage.ToolbarItems>
+		<VerticalStackLayout>
+				<Grid ColumnDefinitions="*,50,50,50" Padding="3	">
+						
+						<Entry x:Name="txtCurrentDirectory" Placeholder="Add ToDo" Grid.Column="0"/>
+						<ImageButton Grid.Column="1" BackgroundColor="#5500ff" CornerRadius="4">
+								<ImageButton.Source>
+										<FontImageSource FontFamily="MaterialFont" Glyph="{x:Static mdi:IconFont.MdiFolderUpload}" Color="{AppThemeBinding Dark=White,
+                                                 Light=White}" />
+								</ImageButton.Source>
+						</ImageButton>
+						<ImageButton Grid.Column="2" BackgroundColor="#5500ff" CornerRadius="4">
+								<ImageButton.Source>
+										<FontImageSource FontFamily="MaterialFont" Glyph="{x:Static mdi:IconFont.MdiDotsHorizontal}" Color="{AppThemeBinding Dark=White,
+                                                 Light=White}" />
+								</ImageButton.Source>
+						</ImageButton>
+						<ImageButton Grid.Column="3" BackgroundColor="#5500ff" CornerRadius="4">
+								<ImageButton.Source>
+										<FontImageSource FontFamily="MaterialFont" Glyph="{x:Static mdi:IconFont.MdiAutorenew}" Color="{AppThemeBinding Dark=White,
+                                                 Light=White}" />
+								</ImageButton.Source>
+						</ImageButton>
+				</Grid>
+				<CollectionView x:Name="collectionView" SelectionMode="Single"
+												SelectionChanged="OnSelectionChanged"
+												>
+						<CollectionView.ItemTemplate>
+								<DataTemplate>
+										<Label Text="{Binding ToDoName}" />
+								</DataTemplate>
+						</CollectionView.ItemTemplate>
+				</CollectionView>
+		</VerticalStackLayout>
+</ContentPage>
